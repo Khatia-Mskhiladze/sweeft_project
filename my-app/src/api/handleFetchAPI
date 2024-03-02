@@ -1,6 +1,0 @@
-// const handleFetchAPI = async () => {
-// const URL = "https://api.unsplash.com/search/photos"
-// const response = await fetch(URL, {
-    
-// });
-// }

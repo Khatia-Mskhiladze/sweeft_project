@@ -2,11 +2,6 @@ import { FadeLoader } from "react-spinners";
 import Gallery from "../../components/gallery/Gallery";
 import Styles from "../fetching/Fetching.module.css";
 
-// interface IData {
-//   filteredGallery: [];
-//   isLoading : boolean;
-// }
-
 const Fetching = ({filteredGallery, isLoading} : any) => {
 
   return (

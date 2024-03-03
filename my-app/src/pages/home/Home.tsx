@@ -10,8 +10,7 @@ const Home = () => {
   const [page, setPage] = useState<number>(1);
   const [filteredGallery, setFilteredGallery] = useState([])
 
-  const [gallery, error, isLoading] = useFetchAPI(page)
-  console.log(error, isLoading)
+  const [gallery, error, isLoading] = useFetchAPI(page);
 
     useEffect(() => {
     const handleScroll = () => {

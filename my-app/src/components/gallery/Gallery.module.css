@@ -13,7 +13,27 @@
   background-color: rgba(6, 6, 6, 0.482);
 }
 .photos {
-  width: 50%;
+  width: 70%;
   height: 60%;
   border-radius: 8px;
 }
+
+@media(max-width: 1070px){
+  .oneCard{
+    width: 30%;
+    font-size: .8rem;
+  }
+  .photos {
+    width: 80%;
+    }
+    }
+@media(max-width: 880px){
+  .oneCard{
+    width: 40%;
+  }
+}
+@media(max-width: 640px){
+  .oneCard{
+    width: 70%;
+  }
+ }

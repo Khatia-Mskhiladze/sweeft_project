@@ -1,7 +1,6 @@
 import React from "react";
 import Styles from "../gallery/Gallery.module.css";
 
-// any???????
 
 const Gallery = ({ data }: any) => {
   return (

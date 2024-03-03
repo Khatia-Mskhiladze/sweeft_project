@@ -1,36 +1,41 @@
-import { useRef } from "react";
 import Styles from "../search/SearchTerm.module.css";
+import { useHistoryContext } from "../../context/histories/historyContextProvider";
+import { searchTermHandler } from "../../context/actions/actionCreators";
 
 const SearchTerm = (props: any) => {
-  const searchTermRef = useRef<HTMLInputElement>(null);
+  const { state, dispatch }: any = useHistoryContext();
+  console.log(state, "state");
+
+  let typingTimeout: any;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value.toLowerCase();
+    clearTimeout(typingTimeout);
 
-    const filtered = props.gallery.filter((item: any) => {
-      const description = item.description
-        ? item.description.toLowerCase()
-        : "";
-      const altDescription = item.alt_description
-        ? item.alt_description.toLowerCase()
-        : "";
+    typingTimeout = setTimeout(() => {
+      const inputValue = e.target.value.toLowerCase();
+      console.log(inputValue);
 
-      return (
-        description.includes(inputValue) || altDescription.includes(inputValue)
-      );
-    });
+      const filtered = props.gallery.filter((item: any) => {
+        const description = item.description
+          ? item.description.toLowerCase()
+          : "";
+        const altDescription = item.alt_description
+          ? item.alt_description.toLowerCase()
+          : "";
+        return (
+          description.includes(inputValue) ||
+          altDescription.includes(inputValue)
+        );
+      });
 
-    return props.setFiltered(filtered);
+      props.setFiltered(filtered);
+      filtered.length > 0 && dispatch(searchTermHandler(filtered));
+    }, 2000);
   };
 
   return (
     <div className={Styles.inputValue}>
-      <input
-        ref={searchTermRef}
-        type="text"
-        placeholder="Search"
-        onChange={handleInputChange}
-      />
+      <input type="text" placeholder="Search" onChange={handleInputChange} />
     </div>
   );
 };

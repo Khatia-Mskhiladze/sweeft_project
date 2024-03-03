@@ -1,0 +1,3 @@
+const INTERACTION = "INTERACTION";
+
+export {INTERACTION};
